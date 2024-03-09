@@ -1,18 +1,36 @@
+import { HomeIcon } from "@primer/octicons-react";
+import Link from "next/link";
+import { ActiveLink } from "../active-link/ActiveLink";
+
+
+
+const navItems = [
+    /* envio items menu */
+    { path: '/about', text: 'About' },
+    { path: '/pricing', text: 'Pricing' },
+    { path: '/contact', text: 'Contact' },
+
+]
 
 
 export const Navbar = () => {
 
 
     return (
-        <nav className="flex bg-blue-800 p-2 m-2 rounded">
-            <span>Home</span>
+        <nav className="flex bg-blue-800 bg-opacity-30 p-2 m-2 rounded">
+            <Link href={'/'} className=" flex items-center">
 
-            <div className="flex flex-1">
-                <a className="mr-2" href="/about">About</a>
-                <a className="mr-2" href="/pricing">Pricing</a>
-                <a className="mr-2" href="/contact">Contact</a>
+                <HomeIcon className="mr-2" />
+                <span > Home</span>
+            </Link >
 
-            </div>
-        </nav>
+            <div className="flex flex-1"></div>
+
+
+            {navItems.map(navItem => (<ActiveLink key={navItem.path} {...navItem} />))}
+
+
+
+        </nav >
     )
 }
